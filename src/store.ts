@@ -3,6 +3,8 @@ import { RESTORE_LOCAL_STORAGE_KEY } from 'constants/restore.constants';
 
 import rootReducer from 'reducers/root.reducer';
 import apiMiddleware from 'middlewares/api.middleware';
+import intervalMiddleware from 'middlewares/interval.middleware';
+import validateTaskNameMiddleware from 'middlewares/validateTaskName.middleware';
 
 const isDev = process.env.NODE_ENV !== 'production';
 
@@ -13,7 +15,11 @@ declare const window: Window & {
 const composeEnhancers =
   (isDev && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__) || compose;
 
-const middlewares = [apiMiddleware];
+const middlewares = [
+  apiMiddleware,
+  intervalMiddleware,
+  validateTaskNameMiddleware
+];
 
 if (isDev) {
   middlewares.push(require('redux-freeze'));

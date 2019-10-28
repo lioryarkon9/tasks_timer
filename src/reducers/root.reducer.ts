@@ -1,11 +1,10 @@
 import { combineReducers } from 'redux';
-
-import network from 'reducers/network.reducer';
-import localization from 'reducers/localization.reducer'; // TODO: remove if no localization
+import tasks from 'reducers/tasks.reducer';
+import currentTask from 'reducers/currentTask.reducer';
 
 export const reducersMap = {
-  network,
-  localization // TODO: remove if no localization
+  tasks,
+  currentTask
 };
 
 export default combineReducers(reducersMap);
